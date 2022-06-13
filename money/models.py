@@ -9,3 +9,6 @@ class Transaction(models.Model):
     time = models.DateTimeField(auto_now_add=True)
     description = models.CharField(max_length=100)
     spent = models.BooleanField(default=True)
+
+    def getDate(self):
+        return self.time.strftime("%d-%m-%Y")

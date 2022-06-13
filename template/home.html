@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block title %}Home | Money Manager{% endblock %} 
+{% block body %}
+<div>
+  <div>
+    <h1>Welcome to Money Manager</h1>
+    <h2>{{user}}</h2>
+    <p>
+      This is a simple web application that allows you to manage your money.
+    </p>
+  </div>
+  <div class="flex space-x-8">
+    <div class="rounded-lg p-6 bg-purple-100"><p class="text-xl text-gray-500">Total Spent: <p class="font-bold text-5xl text-red-500">{{total_spent}}</p></p></div>
+    <div class="rounded-lg p-6 bg-purple-100"><p class="text-xl text-gray-500">Total Gained: <p class="font-bold text-5xl text-green-500">{{total_earned}}</p></p></div>
+    <div class="rounded-lg p-6 bg-purple-100"><p class="text-xl text-gray-500">Net: <p class= {% if net > 0 %} "font-bold text-5xl text-green-500" {% else %} "font-bold text-5xl text-red-500" {% endif %}>{{net}}</p></p></div>
+  </div>
+  <div>
+    <h2>Recent Transactions</h2>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Amount</th>
+      </tr>
+      {% for transaction in transactions %}
+      {% if transaction.spent %}
+      <tr class="text-red-500">
+        <td>{{transaction.getDate}}</td>
+        <td>{{transaction.description}}</td>
+        <td>{{transaction.amount}}</td>
+      </tr>
+      {% else %}
+      <tr class="text-green-500">
+        <td>{{transaction.getDate}}</td>
+        <td>{{transaction.description}}</td>
+        <td>{{transaction.amount}}</td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+  </div>
+</div>
+{% endblock %}
