@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth.views import LogoutView
 from money.views import *
 from rest_framework import routers
 from money.apiViews import *
@@ -42,5 +43,6 @@ urlpatterns = [
     path('signup/', UserSignUpView.as_view()),
     path('view/', ViewTransactionsView.as_view()),
     path('home/', HomeView.as_view()),
+    path('logout/', LogoutView.as_view()),
     # path('', include('router.urls'))
 ] + router.urls

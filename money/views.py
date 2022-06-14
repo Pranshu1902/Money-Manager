@@ -35,7 +35,7 @@ class AddTransactionView(CreateView, LoginRequiredMixin):
         self.object = form.save()
         self.object.user = self.request.user
         self.object.save()
-        return HttpResponseRedirect('/view/')
+        return HttpResponseRedirect('/home/')
 
 class ViewTransactionsView(ListView, LoginRequiredMixin):
     queryset = Transaction.objects.all()
@@ -48,7 +48,10 @@ class HomeView(ListView, LoginRequiredMixin):
     context_object_name = "transactions"
 
     def get_queryset(self):
-        return Transaction.objects.filter(user=self.request.user)
+        data = list(Transaction.objects.filter(user=self.request.user).order_by('-time'))
+        if len(data)>3:
+            data = data[:3]
+        return data
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
