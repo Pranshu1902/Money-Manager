@@ -20,9 +20,22 @@ from rest_framework import routers
 from money.apiViews import *
 
 router = routers.SimpleRouter(trailing_slash=True)
-router.register("api", MoneyViewSet, basename="transactions")
+router.register("transactions", MoneyViewSet, basename="transactions")
+router.register("user", APIUserViewSet, basename="transactions")
+
+# api swagger drf-spectiacular
+
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+
 
 urlpatterns = [
+    # swagger API
+    path('api/', SpectacularAPIView.as_view(), name='schema'),
+    # Optional UI:
+    path('api/swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    
+    # main
     path('admin/', admin.site.urls),
     path('add/', AddTransactionView.as_view()),
     path('login/', UserLoginView.as_view()),
