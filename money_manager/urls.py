@@ -19,6 +19,7 @@ from django.contrib.auth.views import LogoutView
 from money.views import *
 from rest_framework import routers
 from money.apiViews import *
+from rest_framework.authtoken.views import obtain_auth_token
 
 router = routers.SimpleRouter(trailing_slash=True)
 router.register("transactions", MoneyViewSet, basename="transactions")
@@ -35,6 +36,9 @@ urlpatterns = [
     # Optional UI:
     path('api/swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+
+    # user auth login
+    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
     
     # main
     path('admin/', admin.site.urls),

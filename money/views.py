@@ -26,7 +26,7 @@ class TransactionForm(ModelForm):
         model = Transaction
         fields = ['amount', 'description', 'spent']
 
-class AddTransactionView(CreateView, LoginRequiredMixin):
+class AddTransactionView(LoginRequiredMixin, CreateView):
     form_class = TransactionForm
     template_name = 'add_transaction.html'
 
@@ -37,12 +37,12 @@ class AddTransactionView(CreateView, LoginRequiredMixin):
         self.object.save()
         return HttpResponseRedirect('/home/')
 
-class ViewTransactionsView(ListView, LoginRequiredMixin):
+class ViewTransactionsView(LoginRequiredMixin, ListView):
     queryset = Transaction.objects.all()
     template_name = "view.html"
     context_object_name = "transactions"
 
-class HomeView(ListView, LoginRequiredMixin):
+class HomeView(LoginRequiredMixin, ListView):
     queryset = Transaction.objects.all()
     template_name = "home.html"
     context_object_name = "transactions"
