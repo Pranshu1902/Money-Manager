@@ -20,4 +20,3 @@ PyYAML==6.0
 sqlparse==0.4.2
 uritemplate==4.1.1
 whitenoise==6.2.0
-zipp==3.8.0
