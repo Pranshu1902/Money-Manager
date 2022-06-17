@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-txv+pol$hrj@tnpid-%70wp=x!2)(w+(5ya(^h^=ahetiaoud3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://money-manager-pranshu1902.herokuapp.com", "127.0.0.1"]
 
 
 # Application definition
@@ -156,3 +156,7 @@ SPECTACULAR_SETTINGS = {
     'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
     'REDOC_DIST': 'SIDECAR',
 }
+
+
+import django_heroku
+django_heroku.settings(locals())
