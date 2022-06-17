@@ -12,12 +12,19 @@ from money.models import Transaction
 
 class UserLoginView(LoginView):
     template_name = "login.html"
-    success_url = "/add/"
+    success_url = "/home/"
 
 class UserSignUpView(CreateView):
     form_class = UserCreationForm
     template_name = "signup.html"
-    success_url = "/add/"
+    success_url = "/home/"
+
+
+class HomePageView(ListView):
+    model = Transaction
+    template_name = "home_page.html"
+    context_object_name = "transactions"
+    login_url = "/login/"
 
 # Transaction views
 

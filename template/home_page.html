@@ -1,0 +1,94 @@
+{% extends "base.html" %} {% block head %}Money Manager API{% endblock %} 
+{% block body %}
+<div class="bg-gradient-to-r from-green-500 to-green-200">
+  <!-- Heading -->
+  <h1
+    class="font-bold pb-4 text-transparent bg-clip-text bg-gradient-to-tl from-pink-600 via-red-500 to-yellow-500 text-7xl flex justify-center items-center pt-12"
+  >
+    Money Manager API
+  </h1>
+  <!-- Icons -->
+  <p
+    class="font-bold text-white flex justify-center items-center gap-3 text-5xl"
+  >
+    <i
+      class="fa fa-bitcoin text-transparent bg-clip-text bg-gradient-to-tl from-pink-500 to-blue-500"
+    ></i>
+    <i
+      class="fa fa-cny text-transparent bg-clip-text bg-gradient-to-tl from-pink-500 to-blue-500"
+    ></i>
+    <i
+      class="fa fa-eur text-transparent bg-clip-text bg-gradient-to-tl from-pink-500 to-blue-500"
+    ></i>
+    <i
+      class="fa fa-jpy text-transparent bg-clip-text bg-gradient-to-tl from-pink-500 to-blue-500"
+    ></i>
+    <i
+      class="fa fa-inr text-transparent bg-clip-text bg-gradient-to-tl from-pink-500 to-blue-500"
+    ></i>
+    <i
+      class="fa fa-money text-transparent bg-clip-text bg-gradient-to-tl from-pink-500 to-blue-500"
+    ></i>
+  </p>
+  <!-- Intro -->
+  <p
+    class="text-blue-700 font-bold mt-24 text-2xl flex justify-center items-center"
+  >
+    Manage money efficiently and learn how to save money
+  </p>
+
+  <!-- Login/Signup -->
+  <div class="flex flex-col mt-16 gap-2 justify-center items-center">
+    <a
+      href="/login"
+      class="shadow-xl relative inline-flex items-center justify-center p-4 px-5 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out rounded-full shadow-xl group hover:ring-1 hover:ring-purple-500"
+    >
+      <span
+        class="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 via-purple-600 to-pink-700"
+      ></span>
+      <span
+        class="absolute bottom-0 right-0 block w-64 h-64 mb-32 mr-4 transition duration-500 origin-bottom-left transform rotate-45 translate-x-24 bg-pink-500 rounded-full opacity-30 group-hover:rotate-90 ease"
+      ></span>
+      <span class="relative text-white px-12 font-bold">Log in</span>
+    </a>
+    <p class="text-white">
+      New User?&nbsp;<a
+        href="/signup"
+        class="font-bold text-blue-700 hover:text-blue-900"
+        >Sign up</a
+      >
+    </p>
+  </div>
+
+  <!-- Images -->
+  <div class="p-16 gap-y-6 flex flex-col">
+    <div class="flex items-center justify-center gap-2 w-full">
+      {% load static %}
+      <img
+        class="w-1/2 h-1/2 rounded-lg shadow-lg"
+        src="{% static 'home.png' %}"
+        alt="Money Manager"
+      />
+      <p class="w-1/2 font-bold text-xl">
+        Helps manage all your transactions efficiently
+      </p>
+    </div>
+    <div class="flex items-center justify-center gap-2 w-full">
+      <p class="w-1/2 font-bold text-xl">
+        Uses
+        <a
+          class="text-blue-500 hover:text-blue-700 hover:underline"
+          href="/api/swagger/"
+          target="_blank"
+          >API</a
+        >, build using DRF-Spectacular for efficient handling of data
+      </p>
+      <img
+        class="w-1/2 h-1/2 rounded-lg shadow-lg"
+        src="{% static 'api.png' %}"
+        alt="Money Manager"
+      />
+    </div>
+  </div>
+</div>
+{% endblock %}

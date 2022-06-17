@@ -21,6 +21,9 @@ from rest_framework import routers
 from money.apiViews import *
 from rest_framework.authtoken.views import obtain_auth_token
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 router = routers.SimpleRouter(trailing_slash=True)
 router.register("transactions", MoneyViewSet, basename="transactions")
 router.register("user", APIUserViewSet, basename="transactions")
@@ -41,6 +44,7 @@ urlpatterns = [
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
     
     # main
+    path('', HomePageView.as_view()),
     path('admin/', admin.site.urls),
     path('add/', AddTransactionView.as_view()),
     path('login/', UserLoginView.as_view()),
@@ -49,4 +53,4 @@ urlpatterns = [
     path('home/', HomeView.as_view()),
     path('logout/', LogoutView.as_view()),
     # path('', include('router.urls'))
-] + router.urls
+] + router.urls + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
