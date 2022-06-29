@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'money',
     'rest_framework',
+    'corsheaders',
     'drf_spectacular',
     'drf_spectacular_sidecar',
     'rest_framework.authtoken',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -161,6 +163,10 @@ SPECTACULAR_SETTINGS = {
     'REDOC_DIST': 'SIDECAR',
 }
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3030',
+    "https://money-manager-pranshu1902.herokuapp.com",
+]
 
 import django_heroku
 django_heroku.settings(locals())
