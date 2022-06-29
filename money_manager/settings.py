@@ -168,5 +168,5 @@ CORS_ALLOWED_ORIGINS = [
     "https://money-manager-pranshu1902.herokuapp.com",
 ]
 
-import django_heroku
-django_heroku.settings(locals())
+#import django_heroku
+#django_heroku.settings(locals())
