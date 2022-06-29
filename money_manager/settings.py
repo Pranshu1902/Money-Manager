@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-txv+pol$hrj@tnpid-%70wp=x!2)(w+(5ya(^h^=ahetiaoud3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://money-manager-pranshu1902.herokuapp.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["https://money-manager-pranshu1902.herokuapp.com", "127.0.0.1", 'money-manager-pranshu1902.herokuapp.com']
 
 
 # Application definition
@@ -166,10 +166,12 @@ SPECTACULAR_SETTINGS = {
     'REDOC_DIST': 'SIDECAR',
 }
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3030',
-    "https://money-manager-pranshu1902.herokuapp.com",
-]
+CORS_ORIGIN_ALLOW_ALL = True
+
+#CORS_ALLOWED_ORIGINS = [
+#    'http://localhost:3030',
+#    "https://money-manager-pranshu1902.herokuapp.com",
+#]
 
 #import django_heroku
 #django_heroku.settings(locals())
