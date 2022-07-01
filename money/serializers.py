@@ -7,6 +7,13 @@ class MoneySerializer(ModelSerializer):
     class Meta:
         model = Transaction
         fields = ['amount', 'description', 'spent', 'time']
+    
+    # def perform_create(self, serializer):
+    #     return serializer.save(user=self.request.user)
+
+    # def validate(self, attrs):
+    #     attrs['user'] = self.context['request'].user
+    #     return attrs
 
 
 class UserSerializer(ModelSerializer):
