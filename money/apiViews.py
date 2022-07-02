@@ -11,13 +11,11 @@ class MoneySerializer(ModelSerializer):
         fields = ['amount', 'description', 'spent', 'time']
         read_only_fields = ['user']
 
-    
-    # def perform_create(self, serializer):
-    #     return serializer.save(user=self.request.user)
-
-    # def validate(self, attrs):
-    #     attrs['user'] = self.context['request'].user
-    #     return attrs
+    # automatically assign the user to the transaction
+    def validate(self, attrs):
+        user = User.objects.filter(username=self.context['request'].user)[0]
+        attrs['user'] = user
+        return attrs
 
 # install drf-spectacular to make the API swagger
 
@@ -40,9 +38,6 @@ class MoneyViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return Transaction.objects.filter(user=self.request.user)
-
-    # def perform_create(self, serializer):
-    #     return serializer.save(user=self.request.user)
 
 
 #@api_view(['GET'])
