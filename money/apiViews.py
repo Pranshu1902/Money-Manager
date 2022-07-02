@@ -39,13 +39,15 @@ class MoneyViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return Transaction.objects.filter(user=self.request.user)
 
-
-#@api_view(['GET'])
-#def current_user(request):
-#    serializer = UserSerializer(request.user)
-#    return Response(serializer.data)
-
-
 class APIUserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+# get logged in user's details
+class CurrentUserView(APIView):
+    def get(self, request):
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data)

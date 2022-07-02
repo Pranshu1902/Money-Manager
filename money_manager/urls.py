@@ -42,6 +42,9 @@ urlpatterns = [
 
     # user auth login
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+
+    # get user details
+    path('api/user', CurrentUserView.as_view(), name='user'),
     
     # main
     path('', HomePageView.as_view()),
