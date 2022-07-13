@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 from money.models import Transaction
 
@@ -83,3 +84,8 @@ class HomeView(LoginRequiredMixin, ListView):
         context["net"] = total_earned - total_spent
 
         return context
+
+class UserCountView(ListView):
+    queryset = User.objects.all()
+    template_name = "user_count.html"
+    context_object_name = "users"

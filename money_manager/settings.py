@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-txv+pol$hrj@tnpid-%70wp=x!2)(w+(5ya(^h^=ahetiaoud3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["https://money-manager-pranshu1902.herokuapp.com", "127.0.0.1", 'money-manager-pranshu1902.herokuapp.com']
 
