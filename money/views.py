@@ -89,3 +89,8 @@ class UserCountView(ListView):
     queryset = User.objects.all()
     template_name = "user_count.html"
     context_object_name = "users"
+
+class TransactionCountView(ListView):
+    queryset = Transaction.objects.all()
+    template_name = "transactions_count.html"
+    context_object_name = "transactions"

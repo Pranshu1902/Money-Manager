@@ -56,5 +56,6 @@ urlpatterns = [
     path('home/', HomeView.as_view()),
     path('logout/', LogoutView.as_view()),
     path('users/', UserCountView.as_view()),
+    path('transactionscount/', TransactionCountView.as_view()),
     # path('', include('router.urls'))
 ] + router.urls + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
