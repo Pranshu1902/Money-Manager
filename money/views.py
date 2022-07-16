@@ -94,17 +94,3 @@ class TransactionCountView(ListView):
     queryset = Transaction.objects.all()
     template_name = "transactions_count.html"
     context_object_name = "transactions"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        count = 0
-
-        for user in User.objects.all():
-            n = Transaction.objects.filter(user=user).count()
-            if n>count:
-                count = n
-
-        context["count"] = count
-
-        return context
