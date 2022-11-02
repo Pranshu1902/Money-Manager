@@ -8,7 +8,7 @@ from rest_framework.serializers import ModelSerializer
 class MoneySerializer(ModelSerializer):
     class Meta:
         model = Transaction
-        fields = ['amount', 'description', 'spent', 'time']
+        fields = ['id', 'amount', 'description', 'spent', 'time']
         read_only_fields = ['user']
 
     # automatically assign the user to the transaction
